@@ -1,0 +1,39 @@
+.header {
+  @apply sticky top-0 inset-x-0 bg-white dark:bg-dark h-header_height z-30;
+}
+
+.header_container {
+  @apply flex justify-between items-center;
+}
+
+.header_nav_p {
+  @apply hidden screen_900:flex items-center space-x-0.5;
+}
+
+.header_nav_signup {
+  @apply hidden screen_900:block relative text-lg text-white bg-gray-500 px-3 py-1 rounded;
+}
+
+.header_toggle_theme {
+  @apply relative flex justify-between items-center w-11 ring-2 cursor-pointer rounded-full bg-black;
+}
+
+.header_toggle_themeCircle {
+  @apply flex justify-center items-center w-5 h-5 bg-gray-200 rounded-full shadow-lg;
+}
+
+.header_menu_toggle {
+  @apply w-5 h-5 cursor-pointer relative grid gap-1 grid-cols-3 grid-rows-3;
+}
+
+.header_menu_toggle_span {
+  @apply rounded-full shadow-lg col-span-1 row-span-1 bg-gray-800 dark:bg-white;
+}
+
+.header_menu_toggle_spanTimes {
+  @apply h-0.5 absolute inset-0 m-auto rounded-full w-full bg-gray-800 dark:bg-white;
+}
+
+.window_click_effect {
+  @apply p-1 ring-4 animate-ping dark:bg-gray-400 dark:border-gray-500 dark:ring-gray-600 bg-white border-gray-200 ring-gray-300 border-2 transform scale-150 rounded-full fixed z-50;
+}

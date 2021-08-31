@@ -1,0 +1,54 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import './Header.css';
+@import url('https://fonts.googleapis.com/css2?family=Kurale&display=swap');
+
+@font-face {
+  font-family: 'Karla';
+  src: url('/fonts/Karla.ttf');
+  font-style: medium;
+  font-weight: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ombr';
+  src: url('/fonts/OperatorMBR.otf');
+  font-style: medium;
+  font-weight: normal;
+  font-display: swap;
+}
+
+* {
+  transition: all 0.21s !important;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #555555 #100e17 !important;
+  font-family: 'Karla', serif;
+}
+
+.font-kurale {
+  font-family: 'Kurale', serif !important;
+}
+
+.font-ombr {
+  font-family: 'ombr', serif !important;
+}
+
+.responsive {
+  @apply 2xl:max-w-screen-2xl 2xl:mx-auto px-6 lg:px-12;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555555 !important;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-track {
+  background: #100e17 !important;
+}
