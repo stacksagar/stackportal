@@ -22,7 +22,6 @@ export default function HomeSection() {
     };
   }, []);
 
-  
   const { state } = useContext<rootContextTypes>(RootContext);
 
   return (
@@ -103,6 +102,7 @@ export default function HomeSection() {
 
           <img
             src="/images/home-section/hero-bg.png"
+            alt="components-ui"
             className="w-full object-cover object-left-top"
           />
         </div>

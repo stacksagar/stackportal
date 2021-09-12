@@ -61,6 +61,7 @@ module.exports = {
         header_height: '60px',
         pixel_59: '59px',
         screen_minus_header: 'calc(100vh - 60px)',
+        screen_minus_header_dbl: 'calc(100vh - 120px)',
         pixel_300: '300px',
         pixel_320: '320px',
         pixel_350: '350px',

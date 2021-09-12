@@ -1,19 +1,13 @@
-import { templatesDataType } from 'types/templatesDataTypes';
-
-const templates_data: templatesDataType = {
+const data = {
   html5: {
     Portfolios: {
-      InBoxPortfolioHTML5: {
+      InBoxPortfolio: {
         title: 'inBox Personal Portfolio HTML5',
+        image: '/images/templates/InBoxPortfolio.png',
         purchase: '',
-        multipleDemos: [
-          { image: '/images/templates/InBoxPortfolio.png', preview: '' },
-          { image: '/images/templates/InBoxPortfolio.png', preview: '' },
-          { image: '/images/templates/InBoxPortfolio.png', preview: '' },
-          { image: '/images/templates/InBoxPortfolio.png', preview: '' },
-        ],
+        preview: '',
       },
-      InStackPortfolioHTML5: {
+      InStackPortfolio: {
         title: 'inStack Portfolio HTML5',
         image: '/images/templates/InBoxPortfolio.png',
         purchase: '',
@@ -22,7 +16,7 @@ const templates_data: templatesDataType = {
     },
 
     eCommerce: {
-      InStackEcommerceHTML5: {
+      InStackEcommerce: {
         title: 'inStack eCommerce HTML5',
         image: '/images/templates/InBoxPortfolio.png',
         purchase: '',
@@ -33,13 +27,13 @@ const templates_data: templatesDataType = {
 
   reactjs: {
     Portfolios: {
-      InBoxPortfolioReactjs: {
+      InBoxPortfolio: {
         title: 'Smart Box Portfolio React.js',
         image: '/images/templates/InBoxPortfolio.png',
         purchase: '',
         preview: '',
       },
-      InStackPortfolioReactjs: {
+      InStackPortfolio: {
         title: 'inStack Portfolio React.js',
         image: '/images/templates/InBoxPortfolio.png',
         purchase: '',
@@ -48,7 +42,7 @@ const templates_data: templatesDataType = {
     },
 
     eCommerce: {
-      InStackEcommerceReactjs: {
+      InStackEcommerce: {
         title: 'inStack eCommerce React.js',
         image: '/images/templates/InBoxPortfolio.png',
         purchase: '',
@@ -59,13 +53,13 @@ const templates_data: templatesDataType = {
 
   nextjs: {
     Portfolios: {
-      InBoxPortfolioNextjs: {
+      InBoxPortfolio: {
         title: 'Smart Box Portfolio Next.js',
         image: '/images/templates/InBoxPortfolio.png',
         purchase: '',
         preview: '',
       },
-      InStackPortfolioNextjs: {
+      InStackPortfolio: {
         title: 'inStack Portfolio Next.js',
         image: '/images/templates/InBoxPortfolio.png',
         purchase: '',
@@ -74,7 +68,7 @@ const templates_data: templatesDataType = {
     },
 
     eCommerce: {
-      InStackEcommerceNextjs: {
+      InStackEcommerce: {
         title: 'inStack eCommerce Next.js',
         image: '/images/templates/InBoxPortfolio.png',
         purchase: '',
@@ -84,4 +78,39 @@ const templates_data: templatesDataType = {
   },
 };
 
-export default templates_data;
+const all = [];
+const html5 = [];
+const nextjs = [];
+const reactjs = [];
+
+let currentData = [];
+
+Object.entries(data['html5']).map(([key, obj]) => {
+  Object.entries(obj).map(([key, obj2]) => {
+    html5.push(obj2);
+  });
+});
+
+const storeData = (code) => {
+  currentData = [];
+  if (code == 'all') {
+    Object.entries(data).map(([key, obj]) => {
+      Object.entries(obj).map(([key2, obj2]) => {
+        Object.entries(obj2).map(([key3, obj3]) => {
+          currentData.push({
+            code: key,
+            category: key2,
+            templateName: key3,
+            ...obj3,
+          });
+        });
+      });
+    });
+  } else {
+    Object.entries(data[code]).map(([key, obj]) => {
+      Object.entries(obj).map(([key2, obj2]) => {
+        currentData.push({ code, category: key, templateName: key2, obj2 });
+      });
+    });
+  }
+};

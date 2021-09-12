@@ -1,54 +1,56 @@
 import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { templatesDataObjectTypes } from 'types/templatesDataTypes';
 import templates_data from 'src/data/templates_data';
 
-function SingleColumn({
-  title,
-  templateName,
-  purchaseLink,
-  categoryName,
-  image,
-}: templatesDataObjectTypes) {
+function SingleColumn({ template }: { template: templatesDataObjectTypes }) {
+  const {
+    title,
+    purchase,
+    category,
+    image,
+    code,
+    templateKeyName,
+    multipleDemos,
+  } = template;
   const router = useRouter();
-  const [isLoaded,setIsLoaded]=useState(false)
-  const timeoutRef = useRef()
-  useEffect(()=>{ 
-    timeoutRef.current = setTimeOut(()=>{ 
-      setIsLoaded(true)
-    },1000)
 
+  const [isLoaded, setIsLoaded] = useState(false);
+  const timeoutRef = useRef<any>();
+  useEffect(() => {
+    setIsLoaded(false);
+    timeoutRef.current = setTimeout(() => {
+      setIsLoaded(true);
+    }, 2000);
     return () => {
-      clearTimeout(timeoutRef.current)
-      timeoutRef.current = null
-    }
-  },[])
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    };
+  }, []);
 
-  if (isLoaded) {   
+  if (isLoaded) {
     return (
-      <div className="mb-10 md:mb-0 col-span-12 sm:col-span-6 screen_1200:col-span-4 bg-opcity-50 flex flex-col screen_400:flex-row screen_640:flex-col screen_768:flex-row justify-between">
-        <div className="w-full flex items-center justify-center md:w-44 h-36 mx-auto pr-0 screen_400:pr-4 screen_640:pr-0 screen_768:pr-4 mt-2">
-          <div className="w-full h-full">
-            <img
-              className="w-full h-full rounded object-cover object-center"
-              src={image}
-              alt=""
-            />
-          </div>
-        </div>
-
-        <div className="w-full md:w-8/12 flex flex-col justify-between space-y-3">
-          <p className="text-base rounded h-auto sm:h-16 md:h-auto py-2 screen_400:py-0 screen_640:py-2 screen_768:py-0">
-            {title}
-          </p>
-
+      <div className="col-span-12 sm:col-span-6 screen_900:col-span-4 border border-gray-500 border-opacity-20 p-10 relative">
+        {typeof multipleDemos == 'object' ? (
+          <>
+            <div className="inline-block absolute py-1 px-3 top-0 left-0 bg-gray-600 text-white">
+              Available Demos: {multipleDemos.length}
+            </div>
+            <Image width="800" height="500" src={multipleDemos[0].image} />
+          </>
+        ) : (
+          <Image width="800" height="500" src={image} />
+        )}
+        <div>
+          <p className="text-base rounded pt-2 pb-3 text-center">{title}</p>
           <div className="flex flex-col space-y-2">
             <div className="flex space-x-2 justify-between">
               <button
                 onClick={() =>
                   router.push(
-                    `${router.asPath}/${templateName}?category=${categoryName}`
+                    `${router.asPath}/${category}?code=${code}&template=${templateKeyName}`
                   )
                 }
                 className="bg-pink-500 text-sm px-2 py-0.5 rounded w-full text-white"
@@ -56,9 +58,13 @@ function SingleColumn({
                 View Item
               </button>
 
-              <button className="bg-pink-500 text-sm px-2 py-0.5 rounded w-full text-white">
+              <a
+                href={purchase}
+                target="_blank"
+                className="bg-pink-500 text-sm px-2 py-0.5 rounded w-full text-white text-center"
+              >
                 Purchase
-              </button>
+              </a>
             </div>
 
             <button
@@ -70,25 +76,28 @@ function SingleColumn({
           </div>
         </div>
       </div>
-    );   
+    );
   } else {
     return (
-      <div className="mb-10 md:mb-0 col-span-12 sm:col-span-6 screen_1200:col-span-4 bg-opcity-50 flex flex-col screen_400:flex-row screen_640:flex-col screen_768:flex-row justify-between">
-        <div className="w-full flex items-center justify-center md:w-44 h-36 mx-auto pr-0 screen_400:pr-4 screen_640:pr-0 screen_768:pr-4">
-          <div className="w-full h-full bg-gradient-to-tr from-gray-600 to-gray-700 animate-pulse"></div>
-        </div>
+      <div className="col-span-12 sm:col-span-6 screen_900:col-span-4 border border-gray-500 border-opacity-20 p-10">
+        <Image width="800" height="500" src="/images/loading-template.jpg" />
 
-        <div className="w-full md:w-8/12 flex flex-col justify-between space-y-3">
-          <p className="text-base rounded h-auto sm:h-16 md:h-auto py-6 bg-gradient-to-tr from-gray-600 to-gray-700 animate-pulse" /> 
- 
+        <div>
+          <p className=" bg-gradient-to-tr from-gray-600 to-gray-700 animate-pulse text-transparent rounded mt-2 mb-3">
+            {title}
+          </p>
           <div className="flex flex-col space-y-2">
             <div className="flex space-x-2 justify-between">
-              <button className="bg-pink-500 text-sm px-2 py-3 rounded w-full text-transparent  bg-gradient-to-tr from-gray-600 to-gray-700 animate-pulse" />
-
-              <button className="bg-pink-500 text-sm px-2 py-3 rounded w-full text-transparent  bg-gradient-to-tr from-gray-600 to-gray-700 animate-pulse" />
+              <button className=" bg-gradient-to-tr from-gray-600 to-gray-700 animate-pulsetext-sm px-2 py-0.5 rounded w-full text-transparent">
+                View Item
+              </button>
+              <a className="bg-gradient-to-tr from-gray-600 to-gray-700 animate-pulse text-sm px-2 py-0.5 rounded w-full text-transparent">
+                Purchase
+              </a>
             </div>
-
-            <button className="bg-blue-500 text-sm px-2 py-4 rounded text-transparent bg-gradient-to-tr from-gray-600 to-gray-700 animate-pulse" />
+            <button className="bg-gradient-to-tr from-gray-600 to-gray-700 animate-pulse text-transparent text-sm px-2 py-1 rounded">
+              Documentation
+            </button>
           </div>
         </div>
       </div>
@@ -110,45 +119,57 @@ export default function Templates() {
     e.target.classList.add('scale-110');
   };
 
-  const filterHandler = (e) => {
+  const storeData = (code: 'all' | 'html5' | 'reactjs' | 'nextjs') => {
     setTemplates([]);
-    toggleClass(e);
-
-    if (e.target.id == 'all') {
-      Object.entries(templates_data).map(([categoryName, categoryObj]) => {
-        Object.entries(categoryObj).map(([templateName, templateObj]) => {
-          setTemplates((prev) => {
-            return [...prev, { categoryName, templateName, ...templateObj }];
+    if (code == 'all') {
+      Object.entries(templates_data).map(([key, obj]) => {
+        Object.entries(obj).map(([key2, obj2]) => {
+          Object.entries(obj2).map(([key3, obj3]) => {
+            setTemplates((prev) => {
+              return [
+                ...prev,
+                {
+                  code: key,
+                  category: key2,
+                  templateKeyName: key3,
+                  ...obj3,
+                },
+              ];
+            });
           });
         });
       });
     } else {
-      Object.entries(templates_data[e.target.id]).map(
-        ([templateName, templateObj]) => {
+      Object.entries(templates_data[code]).map(([key, obj]) => {
+        Object.entries(obj).map(([key2, obj2]) => {
           setTemplates((prev) => {
             return [
               ...prev,
               {
-                categoryName: e.target.id,
-                templateName,
-                ...templateObj,
+                code,
+                category: key,
+                templateKeyName: key2,
+                ...obj2,
               },
             ];
           });
-        }
-      );
+        });
+      });
+    }
+  };
+
+  const filterHandler = (e) => {
+    setTemplates([]);
+    toggleClass(e);
+    if (e.target.id == 'all') {
+      storeData('all');
+    } else {
+      storeData(e.target.id);
     }
   };
 
   useEffect(() => {
-    setTemplates([]);
-    Object.entries(templates_data).map(([categoryName, categoryObj]) => {
-      Object.entries(categoryObj).map(([templateName, templateObj]) => {
-        setTemplates((prev) => {
-          return [...prev, { categoryName, templateName, ...templateObj }];
-        });
-      });
-    });
+    storeData('all');
   }, []);
 
   return (
@@ -192,19 +213,10 @@ export default function Templates() {
         />
       </div>
 
-      <div className="responsive grid grid-cols-12 sm:gap-5 md:gap-16 pt-20">
-        {templates.map(
-          ({ title, categoryName, purchaseLink, templateName, image }, i) => (
-            <SingleColumn
-              title={title}
-              templateName={templateName}
-              purchaseLink={purchaseLink}
-              categoryName={categoryName}
-              image={image}
-              key={i}
-            />
-          )
-        )}
+      <div className="responsive grid grid-cols-12 py-20">
+        {templates.map((template, i) => (
+          <SingleColumn key={i} template={template} />
+        ))}
       </div>
     </section>
   );

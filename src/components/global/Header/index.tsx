@@ -32,14 +32,14 @@ export default function Header() {
     setRenderClick(false);
   });
 
-  useEffect(() => {
-    setTimeout(() => {
-      setClickWindow(true);
-    }, 100);
-    setTimeout(() => {
-      setClickWindow(false);
-    }, 300);
-  }, [windowPosition]);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setClickWindow(true);
+  //   }, 100);
+  //   setTimeout(() => {
+  //     setClickWindow(false);
+  //   }, 300);
+  // }, [windowPosition]);
 
   useEffect(() => {
     dispatch({ type: 'switch_theme', payload: 'dark' });

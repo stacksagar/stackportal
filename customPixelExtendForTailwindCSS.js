@@ -1,6 +1,7 @@
 const spacing = {
-  header_height: '60px',
-  screen_minus_header: 'calc(100vh - 60px)',
+  header: '60px',
+  minus_header: 'calc(100vh - 60px)',
+  minus_header_dbl: 'calc(100vh - 120px)',
   pixel_0_1: '0.1px',
   pixel_0_2: '0.2px',
   pixel_0_3: '0.3px',

@@ -24,7 +24,7 @@
   transition: all 0.21s !important;
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  scrollbar-color: #555555 #100e17 !important;
+  scrollbar-color: #555555 #100e17;
   font-family: 'Karla', serif;
 }
 
@@ -50,5 +50,13 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #100e17 !important;
+  background: #100e17;
+}
+
+.track_transparent::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+.track_transparent {
+  scrollbar-color: #555555 transparent !important;
 }
