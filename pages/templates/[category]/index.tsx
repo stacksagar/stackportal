@@ -1,7 +1,6 @@
-import ResponsiveViewer from 'components/templates/template/ResponsiveViewer';
-import TemplateViwer from 'components/templates/template/TemplateViwer';
-import { GetServerSidePropsContext } from 'next';
-import templates_data from 'src/data/templates_data';
+import ResponsiveViewer from "components/templates/template/ResponsiveViewer";
+import TemplateViwer from "components/templates/template/TemplateViwer"; 
+import templates_data from "src/data/templates_data";
 
 export default function index({ template }) {
   return (
@@ -12,7 +11,7 @@ export default function index({ template }) {
   );
 }
 
-export const getServerSideProps: GetServerSidePropsContext<any> = (ctx) => {
+export const getServerSideProps = (ctx) => {
   const { category, template, code }: any = ctx.query;
   const getTemplate = templates_data[code][category][template];
   return {

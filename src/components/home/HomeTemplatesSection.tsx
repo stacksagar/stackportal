@@ -1,5 +1,5 @@
-import ExploreLink from 'components/global/utils/ExploreLink';
-import StackTyping from 'stackportal/StackTyping';
+import ExploreLink from "components/global/utils/ExploreLink";
+import StackTyping from "stackportal/StackTyping";
 
 export default function HomeTemplatesSection() {
   return (
@@ -28,14 +28,14 @@ export default function HomeTemplatesSection() {
           />
 
           <div
-            style={{ top: '38%' }}
+            style={{ top: "38%" }}
             className="absolute hidden screen_295:block inset-x-0 mx-auto transform skew-y-3 -rotate-2 text-white text-xs sm:text-base lg:text-xl"
           >
             <StackTyping
-              style={{ textAlign: 'center !important' }}
+              style={{ textAlign: "center !important" }}
               className={`ml-7 md:ml-12 `}
               properties={{
-                typingSentences: ['Responsive'],
+                sentences: ["Responsive"],
                 hideStars: true,
                 hideExpand: true,
                 removeMinWidth: true,

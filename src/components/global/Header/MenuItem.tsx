@@ -19,30 +19,37 @@ export const MenuItemTitles = {
   Blog: {
     Icon: PresentationChartLineIcon,
     desc: 'Read about all things productivity',
+    external_link: false,
   },
   Get_Help: {
     Icon: SupportIcon,
     desc: 'Read about all things productivity',
+    external_link: false,
   },
   Freebies: {
     Icon: ChartPieIcon,
     desc: 'Read about all things productivity',
+    external_link: false,
   },
   Hierarchy: {
     Icon: TrendingUpIcon,
     desc: 'Understand how StackPortal is organized.',
+    external_link: false,
   },
   Pricing: {
     Icon: CurrencyDollarIcon,
     desc: 'Read about all things productivity',
+    external_link: false,
   },
   Script_Plugins: {
     Icon: CubeIcon,
     desc: 'Read about all things productivity',
+    external_link: false,
   },
   About_US: {
     Icon: InformationCircleIcon,
     desc: 'Read about all things productivity',
+    external_link: false,
   },
 };
 
@@ -56,7 +63,7 @@ const MenuItem = ({
   title: string;
   Icon: any;
   desc: string;
-  externalLink?: boolean;
+  externalLink?: boolean | any;
   i: number | any;
 }) => {
   return (

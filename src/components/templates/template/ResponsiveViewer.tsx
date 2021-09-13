@@ -2,32 +2,32 @@ import {
   ArrowNarrowDownIcon,
   ChevronDownIcon,
   ChevronUpIcon,
-} from '@heroicons/react/solid';
-import React, { ElementRef, useEffect, useRef, useState } from 'react';
-import all_devices from 'src/data/all_device_sizes';
-import ResponsiveViewName from './ResponsiveViewName';
-import ResponsiveDisplay from './ResponsiveDisplay';
-import ScaleSelector from './ScaleSelector';
-import { RotateIcon } from 'public/svgs/SvgCode';
+} from "@heroicons/react/solid";
+import React, { ElementRef, useEffect, useRef, useState } from "react";
+import all_devices, { all_devices_types } from "src/data/all_device_sizes";
+import ResponsiveViewName from "./ResponsiveViewName";
+import ResponsiveDisplay from "./ResponsiveDisplay";
+import ScaleSelector from "./ScaleSelector";
+import { RotateIcon } from "public/svgs/SvgCode";
 
 export default function ResponsiveViewer() {
-  const selectDeviceRef = useRef<ElementRef<'span'>>();
+  const selectDeviceRef = useRef<ElementRef<"span">>();
   const [width, setWidth] = useState<string | number>(1920);
   const [height, setHeight] = useState<string | number>(1080);
-  const [selectedModel, setSelectedModel] = useState<string>('Default');
-  const [allDevices, setAllDevices] = useState<object | any>({});
+  const [selectedModel, setSelectedModel] = useState<string>("Default");
+  const [allDevices, setAllDevices] = useState<all_devices_types>();
   const [openDevices, setOpenDevices] = useState(false);
   const [rotate, setRotate] = useState(false);
 
-  const [selectedScale, setSelectedScale] = useState('25%');
+  const [selectedScale, setSelectedScale] = useState("25%");
 
   const widthChangeHandler = (e) => {
     const value = e.target.value;
     // if (parseInt(value.slice(value.length - 1))) {
     if (value.length < 5) {
       setWidth(value);
-      setSelectedModel('Custom');
-      selectDeviceRef.current.innerText = 'Select Device';
+      setSelectedModel("Custom");
+      selectDeviceRef.current.innerText = "Select Device";
     }
     // }
   };
@@ -37,8 +37,8 @@ export default function ResponsiveViewer() {
     // if (parseInt(value.slice(value.length - 1))) {
     if (value.length < 5) {
       setHeight(value);
-      setSelectedModel('Custom');
-      selectDeviceRef.current.innerText = 'Select Device';
+      setSelectedModel("Custom");
+      selectDeviceRef.current.innerText = "Select Device";
     }
     // }
   };
@@ -73,20 +73,20 @@ export default function ResponsiveViewer() {
         <div
           className={`transform origin-top ${
             openDevices
-              ? 'scale-y-100 opacity-100 z-10'
-              : 'scale-y-0 opacity-0 z-0'
+              ? "scale-y-100 opacity-100 z-10"
+              : "scale-y-0 opacity-0 z-0"
           } w-96 h-pixel_350 absolute left-0 top-16 bg-gray-100 dark:bg-gray-900 rounded-b-sm shadow-lg ring-8 ring-gray-100 dark:ring-gray-900 overflow-y-scroll track_transparent grid grid-cols-12`}
         >
           <ResponsiveViewName
             model="Default"
             selectedModel={selectedModel}
-            onClick={() => modelClickHandler(1920, 1080, 'Default')}
+            onClick={() => modelClickHandler(1920, 1080, "Default")}
           />
 
           <ResponsiveViewName
             model="Custom"
             selectedModel={selectedModel}
-            onClick={() => modelClickHandler(width, height, 'Custom')}
+            onClick={() => modelClickHandler(width, height, "Custom")}
           />
 
           {Object.entries(allDevices).map(([deviceType, devices], i) => (
@@ -136,7 +136,7 @@ export default function ResponsiveViewer() {
         <button
           onClick={() => setRotate((prev) => !prev)}
           className={`transform ${
-            rotate ? 'rotate-45' : 'rotate'
+            rotate ? "rotate-45" : "rotate"
           } w-7 h-7 flex items-center justify-center bg-gray-800 rounded-full`}
         >
           <RotateIcon />

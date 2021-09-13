@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
 interface optionTypes {
   type?: string;
@@ -40,14 +40,14 @@ export default function MakeVivus(
 
   function Pathformer(element) {
     // Test params
-    if (typeof element === 'undefined') {
+    if (typeof element === "undefined") {
       throw new Error(
         'Pathformer [constructor]: "element" parameter is required'
       );
     }
 
     // Set the element
-    if (element.constructor === String) {
+    if (element) {
       element = document.getElementById(element);
       if (!element) {
         throw new Error(
@@ -77,30 +77,30 @@ export default function MakeVivus(
    */
 
   Pathformer.prototype.TYPES = [
-    'line',
-    'ellipse',
-    'circle',
-    'polygon',
-    'polyline',
-    'rect',
+    "line",
+    "ellipse",
+    "circle",
+    "polygon",
+    "polyline",
+    "rect",
   ];
 
   /**
    * @type {Array}
    */
   Pathformer.prototype.ATTR_WATCH = [
-    'cx',
-    'cy',
-    'points',
-    'r',
-    'rx',
-    'ry',
-    'x',
-    'x1',
-    'x2',
-    'y',
-    'y1',
-    'y2',
+    "cx",
+    "cy",
+    "points",
+    "r",
+    "rx",
+    "ry",
+    "x",
+    "x1",
+    "x2",
+    "y",
+    "y1",
+    "y2",
   ];
 
   /**
@@ -111,11 +111,11 @@ export default function MakeVivus(
       element,
       pathData,
       pathDom,
-      elements = svg.querySelectorAll(this.TYPES.join(','));
+      elements = svg.querySelectorAll(this.TYPES.join(","));
 
     for (var i = 0; i < elements.length; i++) {
       element = elements[i];
-      fn = this[element.tagName.toLowerCase() + 'ToPath'];
+      fn = this[element.tagName.toLowerCase() + "ToPath"];
       pathData = fn(this.parseAttr(element.attributes));
       pathDom = this.pathMaker(element, pathData);
       element.parentNode.replaceChild(pathDom, element);
@@ -127,13 +127,13 @@ export default function MakeVivus(
    * @return {object}             Data for a `path` element
    */
   Pathformer.prototype.lineToPath = function (element) {
-    let newElement = {},
+    let newElement: any = {},
       x1 = element.x1 || 0,
       y1 = element.y1 || 0,
       x2 = element.x2 || 0,
       y2 = element.y2 || 0;
 
-    newElement.d = 'M' + x1 + ',' + y1 + 'L' + x2 + ',' + y2;
+    newElement.d = "M" + x1 + "," + y1 + "L" + x2 + "," + y2;
     return newElement;
   };
 
@@ -142,7 +142,7 @@ export default function MakeVivus(
    * @return {object}             Data for a `path` element
    */
   Pathformer.prototype.rectToPath = function (element) {
-    let newElement = {},
+    let newElement: any = {},
       x = parseFloat(element.x) || 0,
       y = parseFloat(element.y) || 0,
       width = parseFloat(element.width) || 0,
@@ -155,88 +155,88 @@ export default function MakeVivus(
       ry = Math.min(Math.max(ry < 0 ? rx : ry, 0), height / 2);
 
       newElement.d =
-        'M ' +
+        "M " +
         (x + rx) +
-        ',' +
+        "," +
         y +
-        ' ' +
-        'L ' +
+        " " +
+        "L " +
         (x + width - rx) +
-        ',' +
+        "," +
         y +
-        ' ' +
-        'A ' +
+        " " +
+        "A " +
         rx +
-        ',' +
+        "," +
         ry +
-        ',0,0,1,' +
+        ",0,0,1," +
         (x + width) +
-        ',' +
+        "," +
         (y + ry) +
-        ' ' +
-        'L ' +
+        " " +
+        "L " +
         (x + width) +
-        ',' +
+        "," +
         (y + height - ry) +
-        ' ' +
-        'A ' +
+        " " +
+        "A " +
         rx +
-        ',' +
+        "," +
         ry +
-        ',0,0,1,' +
+        ",0,0,1," +
         (x + width - rx) +
-        ',' +
+        "," +
         (y + height) +
-        ' ' +
-        'L ' +
+        " " +
+        "L " +
         (x + rx) +
-        ',' +
+        "," +
         (y + height) +
-        ' ' +
-        'A ' +
+        " " +
+        "A " +
         rx +
-        ',' +
+        "," +
         ry +
-        ',0,0,1,' +
+        ",0,0,1," +
         x +
-        ',' +
+        "," +
         (y + height - ry) +
-        ' ' +
-        'L ' +
+        " " +
+        "L " +
         x +
-        ',' +
+        "," +
         (y + ry) +
-        ' ' +
-        'A ' +
+        " " +
+        "A " +
         rx +
-        ',' +
+        "," +
         ry +
-        ',0,0,1,' +
+        ",0,0,1," +
         (x + rx) +
-        ',' +
+        "," +
         y;
     } else {
       newElement.d =
-        'M' +
+        "M" +
         x +
-        ' ' +
+        " " +
         y +
-        ' ' +
-        'L' +
+        " " +
+        "L" +
         (x + width) +
-        ' ' +
+        " " +
         y +
-        ' ' +
-        'L' +
+        " " +
+        "L" +
         (x + width) +
-        ' ' +
+        " " +
         (y + height) +
-        ' ' +
-        'L' +
+        " " +
+        "L" +
         x +
-        ' ' +
+        " " +
         (y + height) +
-        ' Z';
+        " Z";
     }
     return newElement;
   };
@@ -246,25 +246,25 @@ export default function MakeVivus(
    * @return {object}             Data for a `path` element
    */
   Pathformer.prototype.polylineToPath = function (element) {
-    let newElement = {},
-      points = element.points.trim().split(' '),
+    let newElement: any = {},
+      points = element.points.trim().split(" "),
       i,
       path;
 
     // Reformatting if points are defined without commas
-    if (element.points.indexOf(',') === -1) {
+    if (element.points.indexOf(",") === -1) {
       let formattedPoints = [];
       for (i = 0; i < points.length; i += 2) {
-        formattedPoints.push(points[i] + ',' + points[i + 1]);
+        formattedPoints.push(points[i] + "," + points[i + 1]);
       }
       points = formattedPoints;
     }
 
     // Generate the path.d value
-    path = 'M' + points[0];
+    path = "M" + points[0];
     for (i = 1; i < points.length; i++) {
-      if (points[i].indexOf(',') !== -1) {
-        path += 'L' + points[i];
+      if (points[i].indexOf(",") !== -1) {
+        path += "L" + points[i];
       }
     }
     newElement.d = path;
@@ -276,8 +276,8 @@ export default function MakeVivus(
    * @return {object}             Data for a `path` element
    */
   Pathformer.prototype.polygonToPath = function (element) {
-    let newElement = Pathformer.prototype.polylineToPath(element);
-    newElement.d += 'Z';
+    let newElement: any = Pathformer.prototype.polylineToPath(element);
+    newElement.d += "Z";
     return newElement;
   };
 
@@ -287,10 +287,10 @@ export default function MakeVivus(
    * @return {object}             Data for a `path` element
    */
   Pathformer.prototype.ellipseToPath = function (element) {
-    let newElement = {},
-      rx = parseFloat(element.rx) || 0,
+    let newElement: any = {},
+      rx: any = parseFloat(element.rx) || 0,
       ry = parseFloat(element.ry) || 0,
-      cx = parseFloat(element.cx) || 0,
+      cx: any = parseFloat(element.cx) || 0,
       cy = parseFloat(element.cy) || 0,
       startX = cx - rx,
       startY = cy,
@@ -298,25 +298,25 @@ export default function MakeVivus(
       endY = cy;
 
     newElement.d =
-      'M' +
+      "M" +
       startX +
-      ',' +
+      "," +
       startY +
-      'A' +
+      "A" +
       rx +
-      ',' +
+      "," +
       ry +
-      ' 0,1,1 ' +
+      " 0,1,1 " +
       endX +
-      ',' +
+      "," +
       endY +
-      'A' +
+      "A" +
       rx +
-      ',' +
+      "," +
       ry +
-      ' 0,1,1 ' +
+      " 0,1,1 " +
       startX +
-      ',' +
+      "," +
       endY;
     return newElement;
   };
@@ -329,35 +329,35 @@ export default function MakeVivus(
    * @return {object}             Data for a `path` element
    */
   Pathformer.prototype.circleToPath = function (element) {
-    let newElement = {},
-      r = parseFloat(element.r) || 0,
-      cx = parseFloat(element.cx) || 0,
+    let newElement: any = {},
+      r: any = parseFloat(element.r) || 0,
+      cx: any = parseFloat(element.cx) || 0,
       cy = parseFloat(element.cy) || 0,
       startX = cx - r,
       startY = cy,
-      endX = parseFloat(cx) + parseFloat(r),
-      endY = cy;
+      endX: any = parseFloat(cx) + parseFloat(r),
+      endY: any = cy;
 
     newElement.d =
-      'M' +
+      "M" +
       startX +
-      ',' +
+      "," +
       startY +
-      'A' +
+      "A" +
       r +
-      ',' +
+      "," +
       r +
-      ' 0,1,1 ' +
+      " 0,1,1 " +
       endX +
-      ',' +
+      "," +
       endY +
-      'A' +
+      "A" +
       r +
-      ',' +
+      "," +
       r +
-      ' 0,1,1 ' +
+      " 0,1,1 " +
       startX +
-      ',' +
+      "," +
       endY;
     return newElement;
   };
@@ -373,7 +373,7 @@ export default function MakeVivus(
   Pathformer.prototype.pathMaker = function (element, pathData) {
     let i,
       attr,
-      pathTag = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      pathTag = document.createElementNS("http://www.w3.org/2000/svg", "path");
     for (i = 0; i < element.attributes.length; i++) {
       attr = element.attributes[i];
       if (this.ATTR_WATCH.indexOf(attr.name) === -1) {
@@ -398,7 +398,7 @@ export default function MakeVivus(
       // Check if no data attribute contains '%', or the transformation is impossible
       if (
         this.ATTR_WATCH.indexOf(attr.name) !== -1 &&
-        attr.value.indexOf('%') !== -1
+        attr.value.indexOf("%") !== -1
       ) {
         throw new Error(
           "Pathformer [parseAttr]: a SVG shape got values in percentage. This cannot be transformed into 'path' tags. Please use 'viewBox'."
@@ -409,7 +409,7 @@ export default function MakeVivus(
     return output;
   };
 
-  ('use strict');
+  ("use strict");
 
   let setupEnv, requestAnimFrame, cancelAnimFrame, parsePositiveInt;
 
@@ -463,12 +463,12 @@ export default function MakeVivus(
     let onLoad, self;
 
     // Basic check
-    if (typeof element === 'undefined') {
+    if (typeof element === "undefined") {
       throw new Error('Vivus [constructor]: "element" parameter is required');
     }
 
     // Set the element
-    if (element.constructor === String) {
+    if (element) {
       element = document.getElementById(element);
       if (!element) {
         throw new Error(
@@ -482,20 +482,20 @@ export default function MakeVivus(
     if (options && options.file) {
       self = this;
       onLoad = function () {
-        let domSandbox = document.createElement('div');
+        let domSandbox = document.createElement("div");
         domSandbox.innerHTML = this.responseText;
 
-        let svgTag = domSandbox.querySelector('svg');
+        let svgTag = domSandbox.querySelector("svg");
         if (!svgTag) {
           throw new Error(
-            'Vivus [load]: Cannot find the SVG in the loaded file : ' +
+            "Vivus [load]: Cannot find the SVG in the loaded file : " +
               options.file
           );
         }
 
         self.el = svgTag;
-        self.el.setAttribute('width', '100%');
-        self.el.setAttribute('height', '100%');
+        self.el.setAttribute("width", "100%");
+        self.el.setAttribute("height", "100%");
         self.parentEl.appendChild(self.el);
         self.isReady = true;
         self.init();
@@ -503,8 +503,8 @@ export default function MakeVivus(
       };
 
       let oReq = new globalThis.XMLHttpRequest();
-      oReq.addEventListener('load', onLoad);
-      oReq.open('GET', options.file);
+      oReq.addEventListener("load", onLoad);
+      oReq.open("GET", options.file);
       oReq.send();
       return;
     }
@@ -525,17 +525,17 @@ export default function MakeVivus(
           }
           self.el =
             element.contentDocument &&
-            element.contentDocument.querySelector('svg');
+            element.contentDocument.querySelector("svg");
           if (!self.el && e) {
             throw new Error(
-              'Vivus [constructor]: object loaded does not contain any SVG'
+              "Vivus [constructor]: object loaded does not contain any SVG"
             );
           } else if (self.el) {
-            if (element.getAttribute('built-by-vivus')) {
+            if (element.getAttribute("built-by-vivus")) {
               self.parentEl.insertBefore(self.el, element);
               self.parentEl.removeChild(element);
-              self.el.setAttribute('width', '100%');
-              self.el.setAttribute('height', '100%');
+              self.el.setAttribute("width", "100%");
+              self.el.setAttribute("height", "100%");
             }
             self.isReady = true;
             self.init();
@@ -544,7 +544,7 @@ export default function MakeVivus(
         };
 
         if (!onLoad()) {
-          element.addEventListener('load', onLoad);
+          element.addEventListener("load", onLoad);
         }
         break;
 
@@ -560,15 +560,15 @@ export default function MakeVivus(
    */
   Vivus.prototype.setOptions = function (options) {
     let allowedTypes = [
-      'delayed',
-      'sync',
-      'async',
-      'nsync',
-      'oneByOne',
-      'scenario',
-      'scenario-sync',
+      "delayed",
+      "sync",
+      "async",
+      "nsync",
+      "oneByOne",
+      "scenario",
+      "scenario-sync",
     ];
-    let allowedStarts = ['inViewport', 'manual', 'autostart'];
+    let allowedStarts = ["inViewport", "manual", "autostart"];
 
     // Basic check
     if (options !== undefined && options.constructor !== Object) {
@@ -582,9 +582,9 @@ export default function MakeVivus(
     // Set the animation type
     if (options.type && allowedTypes.indexOf(options.type) === -1) {
       throw new Error(
-        'Vivus [constructor]: ' +
+        "Vivus [constructor]: " +
           options.type +
-          ' is not an existing animation `type`'
+          " is not an existing animation `type`"
       );
     } else {
       this.type = options.type || allowedTypes[0];
@@ -593,22 +593,22 @@ export default function MakeVivus(
     // Set the start type
     if (options.start && allowedStarts.indexOf(options.start) === -1) {
       throw new Error(
-        'Vivus [constructor]: ' +
+        "Vivus [constructor]: " +
           options.start +
-          ' is not an existing `start` option'
+          " is not an existing `start` option"
       );
     } else {
       this.start = options.start || allowedStarts[0];
     }
 
     this.isIE =
-      globalThis.navigator.userAgent.indexOf('MSIE') !== -1 ||
-      globalThis.navigator.userAgent.indexOf('Trident/') !== -1 ||
-      globalThis.navigator.userAgent.indexOf('Edge/') !== -1;
+      globalThis.navigator.userAgent.indexOf("MSIE") !== -1 ||
+      globalThis.navigator.userAgent.indexOf("Trident/") !== -1 ||
+      globalThis.navigator.userAgent.indexOf("Edge/") !== -1;
     this.duration = parsePositiveInt(options.duration, 120);
     this.delay = parsePositiveInt(options.delay, null);
     this.dashGap = parsePositiveInt(options.dashGap, 1);
-    this.forceRender = options.hasOwnProperty('forceRender')
+    this.forceRender = options.hasOwnProperty("forceRender")
       ? !!options.forceRender
       : this.isIE;
     this.reverseStack = !!options.reverseStack;
@@ -622,7 +622,7 @@ export default function MakeVivus(
       this.handle =
         null;
 
-    this.ignoreInvisible = options.hasOwnProperty('ignoreInvisible')
+    this.ignoreInvisible = options.hasOwnProperty("ignoreInvisible")
       ? !!options.ignoreInvisible
       : false;
 
@@ -631,7 +631,7 @@ export default function MakeVivus(
 
     if (this.delay >= this.duration) {
       throw new Error(
-        'Vivus [constructor]: delay must be shorter than duration'
+        "Vivus [constructor]: delay must be shorter than duration"
       );
     }
   };
@@ -661,7 +661,7 @@ export default function MakeVivus(
       scale,
       hasNonScale;
     timePoint = totalLength = lengthMeter = 0;
-    paths = this.el.querySelectorAll('path');
+    paths = this.el.querySelectorAll("path");
     hasNonScale = false;
 
     for (i = 0; i < paths.length; i++) {
@@ -680,7 +680,7 @@ export default function MakeVivus(
 
       // If vector effect is non-scaling-stroke, the total length won't match the rendered length
       // so we need to calculate the scale and apply it
-      if (path.getAttribute('vector-effect') === 'non-scaling-stroke') {
+      if (path.getAttribute("vector-effect") === "non-scaling-stroke") {
         let rect = path.getBoundingClientRect();
         let box = path.getBBox();
         scale = Math.max(rect.width / box.width, rect.height / box.height);
@@ -695,7 +695,7 @@ export default function MakeVivus(
       if (isNaN(pathObj.length)) {
         if (globalThis.console && console.warn) {
           console.warn(
-            'Vivus [mapping]: cannot retrieve a path element length',
+            "Vivus [mapping]: cannot retrieve a path element length",
             path
           );
         }
@@ -703,7 +703,7 @@ export default function MakeVivus(
       }
       this.map.push(pathObj);
       path.style.strokeDasharray =
-        pathObj.length + ' ' + (pathObj.length + this.dashGap * 2);
+        pathObj.length + " " + (pathObj.length + this.dashGap * 2);
       path.style.strokeDashoffset = pathObj.length + this.dashGap;
       pathObj.length += this.dashGap;
       totalLength += pathObj.length;
@@ -714,7 +714,7 @@ export default function MakeVivus(
     // Show a warning for non-scaling elements
     if (hasNonScale) {
       console.warn(
-        'Vivus: this SVG contains non-scaling-strokes. You should call instance.recalc() when the SVG is resized or you will encounter unwanted behaviour. See https://github.com/maxwellito/vivus#non-scaling for more info.'
+        "Vivus: this SVG contains non-scaling-strokes. You should call instance.recalc() when the SVG is resized or you will encounter unwanted behaviour. See https://github.com/maxwellito/vivus#non-scaling for more info."
       );
     }
 
@@ -731,35 +731,35 @@ export default function MakeVivus(
       pathObj = this.map[i];
 
       switch (this.type) {
-        case 'delayed':
+        case "delayed":
           pathObj.startAt = this.delayUnit * i;
           pathObj.duration = this.duration - this.delay;
           break;
 
-        case 'oneByOne':
+        case "oneByOne":
           pathObj.startAt = (lengthMeter / totalLength) * this.duration;
           pathObj.duration = (pathObj.length / totalLength) * this.duration;
           break;
 
-        case 'sync':
-        case 'async':
-        case 'nsync':
+        case "sync":
+        case "async":
+        case "nsync":
           pathObj.startAt = 0;
           pathObj.duration = this.duration;
           break;
 
-        case 'scenario-sync':
+        case "scenario-sync":
           path = pathObj.el;
           pAttrs = this.parseAttr(path);
           pathObj.startAt =
             timePoint +
-            (parsePositiveInt(pAttrs['data-delay'], this.delayUnit) || 0);
+            (parsePositiveInt(pAttrs["data-delay"], this.delayUnit) || 0);
           pathObj.duration = parsePositiveInt(
-            pAttrs['data-duration'],
+            pAttrs["data-duration"],
             this.duration
           );
           timePoint =
-            pAttrs['data-async'] !== undefined
+            pAttrs["data-async"] !== undefined
               ? pathObj.startAt
               : pathObj.startAt + pathObj.duration;
           this.frameLength = Math.max(
@@ -768,13 +768,13 @@ export default function MakeVivus(
           );
           break;
 
-        case 'scenario':
+        case "scenario":
           path = pathObj.el;
           pAttrs = this.parseAttr(path);
           pathObj.startAt =
-            parsePositiveInt(pAttrs['data-start'], this.delayUnit) || 0;
+            parsePositiveInt(pAttrs["data-start"], this.delayUnit) || 0;
           pathObj.duration = parsePositiveInt(
-            pAttrs['data-duration'],
+            pAttrs["data-duration"],
             this.duration
           );
           this.frameLength = Math.max(
@@ -810,7 +810,7 @@ export default function MakeVivus(
         scale = Math.max(rect.width / box.width, rect.height / box.height);
         pathObj.length = Math.ceil(path.getTotalLength() * scale);
         path.style.strokeDasharray =
-          pathObj.length + ' ' + (pathObj.length + this.dashGap * 2);
+          pathObj.length + " " + (pathObj.length + this.dashGap * 2);
       }
     }
     this.trace();
@@ -895,22 +895,22 @@ export default function MakeVivus(
 
   Vivus.prototype.starter = function () {
     switch (this.start) {
-      case 'manual':
+      case "manual":
         return;
 
-      case 'autostart':
+      case "autostart":
         this.play();
         break;
 
-      case 'inViewport':
+      case "inViewport":
         let self = this,
           listener = function () {
             if (self.isInViewport(self.parentEl, 1)) {
               self.play();
-              globalThis.removeEventListener('scroll', listener);
+              globalThis.removeEventListener("scroll", listener);
             }
           };
-        globalThis.addEventListener('scroll', listener);
+        globalThis.addEventListener("scroll", listener);
         listener();
         break;
     }
@@ -921,10 +921,10 @@ export default function MakeVivus(
    */
   Vivus.prototype.getStatus = function () {
     return this.currentFrame === 0
-      ? 'start'
+      ? "start"
       : this.currentFrame === this.frameLength
-      ? 'end'
-      : 'progress';
+      ? "end"
+      : "progress";
   };
 
   Vivus.prototype.reset = function () {
@@ -951,14 +951,14 @@ export default function MakeVivus(
   Vivus.prototype.play = function (speed, callback) {
     this.instanceCallback = null;
 
-    if (speed && typeof speed === 'function') {
+    if (speed && typeof speed === "function") {
       this.instanceCallback = speed; // first parameter is actually the callback function
       speed = null;
-    } else if (speed && typeof speed !== 'number') {
-      throw new Error('Vivus [play]: invalid speed');
+    } else if (speed && typeof speed !== "number") {
+      throw new Error("Vivus [play]: invalid speed");
     }
     // if the first parameter wasn't the callback, check if the seconds was
-    if (callback && typeof callback === 'function' && !this.instanceCallback) {
+    if (callback && typeof callback === "function" && !this.instanceCallback) {
       this.instanceCallback = callback;
     }
 
@@ -990,10 +990,10 @@ export default function MakeVivus(
 
   Vivus.prototype.isInvisible = function (el) {
     let rect,
-      ignoreAttr = el.getAttribute('data-ignore');
+      ignoreAttr = el.getAttribute("data-ignore");
 
     if (ignoreAttr !== null) {
-      return ignoreAttr !== 'false';
+      return ignoreAttr !== "false";
     }
 
     if (this.ignoreInvisible) {

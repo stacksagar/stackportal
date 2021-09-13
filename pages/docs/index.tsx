@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import Link from 'next/link';
 import docs_data from 'src/data/docs_data';
-import { docsType } from 'types/DocsType';
+import { docsType } from 'types/docsType';
 import DocsSearch from 'components/documentation/DocsSearch';
 
 function SingleColumn({ title, keys, Icon }) {
