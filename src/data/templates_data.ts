@@ -5,7 +5,7 @@ const templates_data: templatesDataType = {
     Portfolios: {
       SmartBoxPortfolioReactjs: {
         title: "Smart Box Portfolio React.js",
-        image: "/images/templates/InBoxPortfolio.png",
+        image: "/images/templates/sbp.png",
         purchase: "https://smart-box-portfolio.netlify.app/",
         preview: "https://smart-box-portfolio.netlify.app/",
       },
