@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 
 export default function ResponsiveDisplay({
   width,
   height,
   selectedScale,
   rotate,
+  preview,
 }) {
   const [iframeLoaded, setIframeLoaded] = useState(false);
   const [negativeMargin, setNegativeMargin] = useState(0);
@@ -43,19 +44,16 @@ export default function ResponsiveDisplay({
             width: `${rotate ? height : width}px`,
             height: `${rotate ? width : height}px`,
             transform: `scale(${selectedScale})`,
-            transformOrigin: 'top center',
+            transformOrigin: "top center",
             marginBottom: `-${negativeMargin}px`,
           }}
           className={`bg-gradient-to-tr bg-gray-500 ${
             iframeLoaded
-              ? 'animate-none from-gray-400'
-              : 'animate-pulse from-gray-800 to-gray-700'
+              ? "animate-none from-gray-400"
+              : "animate-pulse from-gray-800 to-gray-700"
           } p-1 rounded-sm`}
         >
-          <iframe
-            className="w-full h-full"
-            src="http://localhost:3000"
-          ></iframe>
+          <iframe className="w-full h-full" src={preview}></iframe>
         </div>
       </div>
     </div>

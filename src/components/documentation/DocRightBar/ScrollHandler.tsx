@@ -47,10 +47,9 @@ export default function ScrollHandler({ doc_center_ref }) {
   }, []);
 
   return (
-    <div className="mb-10">
-      <div className="flex justify-start space-x-3 items-center">
+    <div className="border-b border-t py-12 w-full border-gray-500 border-opacity-30 flex flex-col justify-center items-center">
+      <div className="flex justify-center space-x-3 w-32">
         <button
-          disabled={isMount}
           onClick={() =>
             setScrollTop(
               (prev) => prev - (doc_center_ref.current.clientHeight - 100)
@@ -60,7 +59,7 @@ export default function ScrollHandler({ doc_center_ref }) {
           <ChevronUpIcon className="h-6 text-gray-400" />
         </button>
         <span>Screen</span>
-        <button disabled={isMount}>
+        <button>
           <ChevronDownIcon
             className="h-6 text-gray-400"
             onClick={() =>
@@ -72,20 +71,10 @@ export default function ScrollHandler({ doc_center_ref }) {
         </button>
       </div>
 
-      <div className="flex justify-start space-x-3 items-center my-5">
-        <button onClick={() => playPause()}>
-          {isMount ? (
-            <PauseIcon className="w-6 text-gray-400" />
-          ) : (
-            <PlayIcon className="w-6 text-gray-400" />
-          )}
-        </button>
-        <span>Auto Scroll</span>
-      </div>
-
-      <div className="flex justify-start space-x-3 items-center">
+      <div className="flex justify-center space-x-3 w-32  my-5">
         <button
           onClick={() => {
+            setScrollTop(0);
             doc_center_ref.current.scrollTop = 0;
           }}
         >
@@ -99,6 +88,18 @@ export default function ScrollHandler({ doc_center_ref }) {
           <ArrowCircleDownIcon className="h-6 text-gray-400" />
         </button>
       </div>
+   
+      <div className="flex justify-center space-x-3 w-32">
+        <button onClick={() => playPause()}>
+          {isMount ? (
+            <PauseIcon className="w-6 text-gray-400" />
+          ) : (
+            <PlayIcon className="w-6 text-gray-400" />
+          )}
+        </button>
+        <span>Auto Scroll</span>
+      </div>
+
     </div>
   );
 }

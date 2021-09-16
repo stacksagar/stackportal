@@ -1,11 +1,11 @@
-import { ExternalLinkIcon } from '@heroicons/react/solid';
-import { HTMLIcon, ReactIcon } from 'components/svgs/HomepageSvgs';
-import StackTyping from 'stackportal/StackTyping';
-import HomeFeatureSection from './HomeFeatureSection';
-import { useContext, useEffect, useRef, useState } from 'react';
-import { RootContext } from 'context/rootContext';
-import rootContextTypes from 'context/types/rootContextTypes';
-import Link from 'next/link';
+import { ExternalLinkIcon } from "@heroicons/react/solid";
+import { HTMLIcon, ReactIcon } from "components/svgs/HomepageSvgs";
+import StackTyping from "stackportal/StackTyping";
+import HomeFeatureSection from "./HomeFeatureSection";
+import { useContext, useEffect, useRef, useState } from "react";
+import { RootContext } from "context/rootContext";
+import rootContextTypes from "context/types/rootContextTypes";
+import Link from "next/link";
 
 export default function HomeSection() {
   const [showText, setShowText] = useState<boolean>(false);
@@ -30,11 +30,11 @@ export default function HomeSection() {
         <div className="w-full screen_650:w-pixel_650 md:pr-10 py-4 relative z-20 overflow-hidden">
           <h1
             className="leading-4 tracking-tight text-blue-500 dark:text-blue-300"
-            style={{ fontSize: '32px' }}
+            style={{ fontSize: "32px" }}
           >
             <StackTyping
               properties={{
-                sentences: ['Frontend Hidden'],
+                sentences: ["Frontend Hidden"],
                 timing: {
                   write: 150,
                   iterationCount: 1,
@@ -43,9 +43,9 @@ export default function HomeSection() {
             />
           </h1>
           <h1
-            style={{ WebkitTextFillColor: 'transparent' }}
+            style={{ WebkitTextFillColor: "transparent" }}
             className={`${
-              showText ? 'animate-focus-in-contract opacity-100' : 'opacity-0'
+              showText ? "animate-focus-in-contract opacity-100" : "opacity-0"
             } font-kurale text-6xl bg-clip-text bg-gradient-to-r from-yellow-600 dark:from-yellow-500 to-pink-500 tracking-tight -ml-1 pb-2`}
           >
             Beautifier
@@ -69,17 +69,17 @@ export default function HomeSection() {
           </p>
 
           <div className="flex space-x-4 mt-12">
-            <Link href="/tailwind-components">
+            <Link href="/docs">
               <button className="focus:ring px-3 py-1 screen_295:py-2 screen_295:px-4 flex justify-between items-center bg-blue-700 dark:bg-gray-200 text-white dark:text-gray-900 rounded-lg group">
-                Components
+                Documentations
                 <span className="opacity-0 w-0 group-hover:opacity-100 group-hover:px-2">
                   <ExternalLinkIcon className="w-3" />
                 </span>
               </button>
             </Link>
-            <Link href="/templates">
+            <Link href="/tailwind-components">
               <button className="focus:ring px-3 py-1 screen_295:py-2 screen_295:px-4 flex justify-between items-center bg-gray-500 dark:bg-gray-800 shadow  text-white rounded-lg group">
-                Templates
+                Components
                 <span className="opacity-0 w-0 group-hover:opacity-100 group-hover:px-2">
                   <ExternalLinkIcon className="w-3" />
                 </span>
@@ -92,9 +92,9 @@ export default function HomeSection() {
           <div
             style={{
               background: `${
-                state.thememode == 'dark'
-                  ? 'linear-gradient(0deg,#151f33, #151f3399,transparent,transparent,transparent)'
-                  : 'linear-gradient(0deg, #fff,  rgba(255, 255, 255, 0.68),#fff0,#fff0,#fff0)'
+                state.thememode == "dark"
+                  ? "linear-gradient(0deg,#151f33, #151f3399,transparent,transparent,transparent)"
+                  : "linear-gradient(0deg, #fff,  rgba(255, 255, 255, 0.68),#fff0,#fff0,#fff0)"
               }`,
             }}
             className="w-full h-pixel_650 z-10 absolute top-0 left-0"

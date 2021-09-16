@@ -1,11 +1,17 @@
 import ResponsiveViewer from "components/templates/template/ResponsiveViewer";
-import TemplateViwer from "components/templates/template/TemplateViwer"; 
+import TemplateViwer from "components/templates/template/TemplateViwer";
 import templates_data from "src/data/templates_data";
+import { templatesDataObjectTypes } from "types/templatesDataTypes";
 
-export default function index({ template }) {
+export default function index({
+  template,
+}: {
+  template: templatesDataObjectTypes;
+}) {
+
   return (
     <div>
-      {/* <ResponsiveViewer /> */}
+      <ResponsiveViewer preview={template.preview} />
       <TemplateViwer template={template} />
     </div>
   );

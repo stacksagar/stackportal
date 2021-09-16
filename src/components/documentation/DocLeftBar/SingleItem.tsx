@@ -10,9 +10,8 @@ export default function SingleItem({
   scrollWidth,
   index,
   doc_center_ref,
+  isLast,
 }) {
-  useEffect(() => {}, []);
-
   const setScrolled = (index) => {
     const all_doc_article = document.querySelectorAll(".doc_article");
     let n = 0;
@@ -22,28 +21,30 @@ export default function SingleItem({
       }
     });
     doc_center_ref.current.scrollTop = n;
-    console.log(n);
   };
 
   return (
     <div className="w-full text-sm text-center bg-gray-200 dark:bg-gray-800 rounded-sm mb-1">
       <button
         onClick={() => setScrolled(index)}
-        className="z-10 w-full py-2 flex items-center justify-around relative overflow-hidden"
+        className="z-10 w-full py-2 flex items-center justify-start relative overflow-hidden"
       >
         <span
-          className={`${
-            scrollWidth > 90 ? "bg-white" : "bg-transparent"
-          } relative z-10 w-3 h-3 rounded-full border flex items-center justify-center`}
+          className={`${isLast ? "opacity-0" : "opacity-100"} ${
+            scrollWidth > 98 ? "bg-white" : "bg-transparent"
+          } relative z-10 w-3 h-3 rounded-full border flex items-center justify-center mx-3`}
         >
-          {scrollWidth > 90 && <CheckIcon className="w-2 text-black" />}
+          {scrollWidth > 98 && <CheckIcon className="w-2 text-black" />}
         </span>
+
         <span className="z-10 font-ombr ">{title}</span>
-        <span className="z-10">+</span>
-        <span
-          style={{ width: `${scrollWidth > 0 ? `${scrollWidth}` : "0"}%` }}
-          className="h-full absolute left-0 inset-y-0 m-auto dark:bg-gray-700 bg-gray-300 z-0"
-        />
+
+        {isLast ? null : (
+          <span
+            style={{ width: `${scrollWidth > 0 ? `${scrollWidth}` : "0"}%` }}
+            className="h-full absolute left-0 inset-y-0 m-auto dark:bg-gray-700 bg-gray-300 z-0"
+          />
+        )}
       </button>
 
       <div className="flex-col space-y-3 py-2 justify-start hidden">

@@ -1,9 +1,9 @@
-import { useEffect, useState, useRef } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-import { templatesDataObjectTypes } from 'types/templatesDataTypes';
-import templates_data from 'src/data/templates_data';
+import { useEffect, useState, useRef } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { templatesDataObjectTypes } from "types/templatesDataTypes";
+import templates_data from "src/data/templates_data";
 
 function SingleColumn({ template }: { template: templatesDataObjectTypes }) {
   const {
@@ -33,7 +33,7 @@ function SingleColumn({ template }: { template: templatesDataObjectTypes }) {
   if (isLoaded) {
     return (
       <div className="col-span-12 sm:col-span-6 screen_900:col-span-4 border border-gray-500 border-opacity-20 p-10 relative">
-        {typeof multipleDemos == 'object' ? (
+        {typeof multipleDemos == "object" ? (
           <>
             <div className="inline-block absolute py-1 px-3 top-0 left-0 bg-gray-600 text-white">
               Available Demos: {multipleDemos.length}
@@ -68,7 +68,7 @@ function SingleColumn({ template }: { template: templatesDataObjectTypes }) {
             </div>
 
             <button
-              onClick={() => alert('make it push')}
+              onClick={() => router.push(`/docs/${templateKeyName}`)}
               className="bg-blue-500 text-sm px-2 py-1 rounded text-white"
             >
               Documentation
@@ -109,19 +109,19 @@ export default function Templates() {
   const [templates, setTemplates] = useState<templatesDataObjectTypes[]>([]);
 
   const toggleClass = (e) => {
-    document.querySelectorAll('.template_filter').forEach((ele) => {
-      ele.classList.remove('bg-opacity-100');
-      ele.classList.remove('ring');
-      ele.classList.remove('scale-110');
+    document.querySelectorAll(".template_filter").forEach((ele) => {
+      ele.classList.remove("bg-opacity-100");
+      ele.classList.remove("ring");
+      ele.classList.remove("scale-110");
     });
-    e.target.classList.add('bg-opacity-100');
-    e.target.classList.add('ring');
-    e.target.classList.add('scale-110');
+    e.target.classList.add("bg-opacity-100");
+    e.target.classList.add("ring");
+    e.target.classList.add("scale-110");
   };
 
-  const storeData = (code: 'all' | 'html5' | 'reactjs' | 'nextjs') => {
+  const storeData = (code: "all" | "html5" | "reactjs" | "nextjs") => {
     setTemplates([]);
-    if (code == 'all') {
+    if (code == "all") {
       Object.entries(templates_data).map(([key, obj]) => {
         Object.entries(obj).map(([key2, obj2]) => {
           Object.entries(obj2).map(([key3, obj3]) => {
@@ -161,15 +161,15 @@ export default function Templates() {
   const filterHandler = (e) => {
     setTemplates([]);
     toggleClass(e);
-    if (e.target.id == 'all') {
-      storeData('all');
+    if (e.target.id == "all") {
+      storeData("all");
     } else {
       storeData(e.target.id);
     }
   };
 
   useEffect(() => {
-    storeData('all');
+    storeData("all");
   }, []);
 
   return (

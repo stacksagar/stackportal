@@ -10,26 +10,24 @@ import ResponsiveDisplay from "./ResponsiveDisplay";
 import ScaleSelector from "./ScaleSelector";
 import { RotateIcon } from "public/svgs/SvgCode";
 
-export default function ResponsiveViewer() {
+export default function ResponsiveViewer({ preview }) {
   const selectDeviceRef = useRef<ElementRef<"span">>();
   const [width, setWidth] = useState<string | number>(1920);
   const [height, setHeight] = useState<string | number>(1080);
   const [selectedModel, setSelectedModel] = useState<string>("Default");
-  const [allDevices, setAllDevices] = useState<all_devices_types>();
+  const [allDevices, setAllDevices] = useState<all_devices_types | any>({});
   const [openDevices, setOpenDevices] = useState(false);
   const [rotate, setRotate] = useState(false);
 
-  const [selectedScale, setSelectedScale] = useState("25%");
+  const [selectedScale, setSelectedScale] = useState("50%");
 
   const widthChangeHandler = (e) => {
     const value = e.target.value;
-    // if (parseInt(value.slice(value.length - 1))) {
     if (value.length < 5) {
       setWidth(value);
       setSelectedModel("Custom");
       selectDeviceRef.current.innerText = "Select Device";
     }
-    // }
   };
 
   const heightChangeHandler = (e) => {
@@ -144,6 +142,7 @@ export default function ResponsiveViewer() {
       </div>
 
       <ResponsiveDisplay
+        preview={preview}
         selectedScale={selectedScale}
         width={width}
         height={height}

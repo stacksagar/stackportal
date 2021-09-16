@@ -2,7 +2,7 @@ import { ArrowRightIcon } from '@heroicons/react/solid';
 
 export default function CustomWork() {
   return (
-    <div className="relative border border-gray-500 rounded p-2">
+    <div className="relative border border-gray-500 rounded p-2 mx-5">
       <div className="text-xs font-semibold tracking-wide py-0.5 px-2 bg-gray-50 dark:bg-dark4  rounded absolute -top-3">
         <h1
           className="bg-clip-text bg-gradient-to-r from-green-500 dark:from-yellow-400 to-pink-500"

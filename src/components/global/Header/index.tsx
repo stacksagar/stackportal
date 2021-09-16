@@ -69,14 +69,14 @@ export default function Header() {
               />
             </Link>
 
-            <p className={`header_nav_p`}>
-              <BookOpenIcon className="h-4" />
-              <Link href="/docs"> Documentations </Link>
+            <p className={`header_nav_p`}> 
+              <Link href="/templates"> Templates </Link>
             </p>
 
-            <button className="hidden screen_900:block font-kurale">
-              <Link href="/"> Login </Link>
-            </button>
+            <p className={`header_nav_p`}> 
+              <Link href="/docs"> Documentation </Link>
+            </p>
+   
           </nav>
         </div>
 
