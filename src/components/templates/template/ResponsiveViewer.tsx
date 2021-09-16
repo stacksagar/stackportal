@@ -12,10 +12,10 @@ import { RotateIcon } from "public/svgs/SvgCode";
 
 export default function ResponsiveViewer({ preview }) {
   const selectDeviceRef = useRef<ElementRef<"span">>();
-  const [width, setWidth] = useState<string | number>(1920);
-  const [height, setHeight] = useState<string | number>(1080);
+  const [width, setWidth] = useState<string | number>(900);
+  const [height, setHeight] = useState<string | number>(600);
   const [selectedModel, setSelectedModel] = useState<string>("Default");
-  const [allDevices, setAllDevices] = useState<all_devices_types | any>({});
+  const [allDevices, setAllDevices] = useState<all_devices_types>();
   const [openDevices, setOpenDevices] = useState(false);
   const [rotate, setRotate] = useState(false);
 
@@ -78,7 +78,7 @@ export default function ResponsiveViewer({ preview }) {
           <ResponsiveViewName
             model="Default"
             selectedModel={selectedModel}
-            onClick={() => modelClickHandler(1920, 1080, "Default")}
+            onClick={() => modelClickHandler(900, 600, "Default")}
           />
 
           <ResponsiveViewName
@@ -87,27 +87,30 @@ export default function ResponsiveViewer({ preview }) {
             onClick={() => modelClickHandler(width, height, "Custom")}
           />
 
-          {Object.entries(allDevices).map(([deviceType, devices], i) => (
-            <React.Fragment key={i}>
-              <div key={i} className="col-span-12 flex justify-center py-3">
-                <button className="w-11/12 bg-gray-500 p-2 rounded flex justify-center items-center space-x-5">
-                  <span className="text-base font-semibold text-white">
-                    {deviceType}
-                  </span>
-                  <ArrowNarrowDownIcon className="w-4 text-white" />
-                </button>
-              </div>
+          {typeof allDevices == "object" &&
+            Object.entries(allDevices).map(([deviceType, devices], i) => (
+              <React.Fragment key={i}>
+                <div key={i} className="col-span-12 flex justify-center py-3">
+                  <button className="w-11/12 bg-gray-500 p-2 rounded flex justify-center items-center space-x-5">
+                    <span className="text-base font-semibold text-white">
+                      {deviceType}
+                    </span>
+                    <ArrowNarrowDownIcon className="w-4 text-white" />
+                  </button>
+                </div>
 
-              {devices.map(({ model, viewportX, viewportY }, index) => (
-                <ResponsiveViewName
-                  key={index}
-                  model={model}
-                  selectedModel={selectedModel}
-                  onClick={() => modelClickHandler(viewportX, viewportY, model)}
-                />
-              ))}
-            </React.Fragment>
-          ))}
+                {devices.map(({ model, viewportX, viewportY }, index) => (
+                  <ResponsiveViewName
+                    key={index}
+                    model={model}
+                    selectedModel={selectedModel}
+                    onClick={() =>
+                      modelClickHandler(viewportX, viewportY, model)
+                    }
+                  />
+                ))}
+              </React.Fragment>
+            ))}
         </div>
 
         <div>

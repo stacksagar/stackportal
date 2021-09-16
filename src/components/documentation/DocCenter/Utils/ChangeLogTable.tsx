@@ -1,7 +1,6 @@
 export const ChangeLog = ({
   date,
-  version,
-  details,
+  version, 
   action,
 }: {
   date: string;
