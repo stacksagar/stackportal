@@ -24,3 +24,4 @@ export default function ListStepper({ children }) {
     <ul className="border ring-1 rounded p-8 flex flex-col">{children}</ul>
   );
 }
+  
