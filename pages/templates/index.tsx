@@ -73,6 +73,7 @@ function SingleColumn({ template }: { template: templatesDataObjectTypes }) {
             >
               Documentation
             </button>
+
           </div>
         </div>
       </div>

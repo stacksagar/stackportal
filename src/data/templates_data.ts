@@ -3,8 +3,15 @@ import { templatesDataType } from "types/templatesDataTypes";
 const templates_data: templatesDataType = {
   reactjs: {
     Portfolios: {
-      SmartBoxPortfolioReactjs: {   
+      SmartBoxPortfolioReactjs: {
         title: "Smart Box Portfolio React.js",
+        image: "/images/templates/sbp.png",
+        purchase: "https://smart-box-portfolio.netlify.app/",
+        preview: "https://smart-box-portfolio.netlify.app/",
+      },
+
+      SmartCardTogglePortfolioReactjs: {
+        title: "Smart Card Toggle Portfolio React.js",
         image: "/images/templates/sbp.png",
         purchase: "https://smart-box-portfolio.netlify.app/",
         preview: "https://smart-box-portfolio.netlify.app/",

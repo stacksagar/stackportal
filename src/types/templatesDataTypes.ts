@@ -16,8 +16,9 @@ export type templatesDataCodeType = {
   Social?: templatesDataCodeCategoryType;
 };
 
-export type templatesDataCodeCategoryType = { 
-  SmartBoxPortfolioReactjs?: templatesDataObjectTypes; 
+export type templatesDataCodeCategoryType = {
+  SmartBoxPortfolioReactjs?: templatesDataObjectTypes;
+  SmartCardTogglePortfolioReactjs?: templatesDataObjectTypes;
 };
 
 export interface templatesDataObjectTypes {
@@ -29,15 +30,15 @@ export interface templatesDataObjectTypes {
   code?: string;
   multipleDemos?: multipleDemosType[];
   category?:
-    | 'Portfolios'
-    | 'eCommerce'
-    | 'Agency'
-    | 'Business'
-    | 'Organization'
-    | 'Medical'
-    | 'Resturant'
-    | 'Hostipal'
-    | 'Social'
+    | "Portfolios"
+    | "eCommerce"
+    | "Agency"
+    | "Business"
+    | "Organization"
+    | "Medical"
+    | "Resturant"
+    | "Hostipal"
+    | "Social"
     | any;
 }
 
