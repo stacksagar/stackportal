@@ -136,7 +136,7 @@ export default function SmartBoxPortfolio() {
         <Title text="Change Home Picture" />
 
         <FilePath paths={["public", "images", "home_picture.jpg"]} />
-
+        
         <DocImage
           width="1019"
           height="188"

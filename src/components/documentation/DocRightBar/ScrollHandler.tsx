@@ -6,7 +6,7 @@ import {
   PauseIcon,
   PlayIcon,
 } from "@heroicons/react/outline";
-import { ElementRef, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function ScrollHandler({ doc_center_ref }) {
   const [scrollTop, setScrollTop] = useState<any>(0);
@@ -41,6 +41,10 @@ export default function ScrollHandler({ doc_center_ref }) {
   };
 
   useEffect(() => {
+    doc_center_ref.current.addEventListener("scroll", () => {
+      setScrollTop(doc_center_ref.current.scrollTop);
+    });
+
     return () => {
       setIsMount((prev) => !prev);
     };
@@ -88,7 +92,7 @@ export default function ScrollHandler({ doc_center_ref }) {
           <ArrowCircleDownIcon className="h-6 text-gray-400" />
         </button>
       </div>
-   
+
       <div className="flex justify-center space-x-3 w-32">
         <button onClick={() => playPause()}>
           {isMount ? (
@@ -99,7 +103,6 @@ export default function ScrollHandler({ doc_center_ref }) {
         </button>
         <span>Auto Scroll</span>
       </div>
-
     </div>
   );
 }

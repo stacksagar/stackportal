@@ -24,7 +24,7 @@ export default function DocsSearch({ allDocsKeys }) {
         <div
           onClick={() => searchRef.current.focus()}
           className={`absolute text-sm ${
-            isFocus ? 'hidden' : 'flex'
+            isFocus || searchVal ? 'hidden' : 'flex'
           } space-x-1 items-center cursor-pointer justify-center inset-y-0 left-5 my-auto `}
         >
           <span>Search</span>

@@ -34,7 +34,7 @@ export default function SmartCardTogglePortfolioReactjs() {
     >
       {/* Intro Section */}
       <DocSection>
-        <Title no_my={true} text="About Smard-Card Portfolio" />
+        <Title no_my={true} text="About Smart-Card Portfolio" />
         <p>
           Welcome to <b>Smart Card</b> Portfolio react.js template! We would
           like to thank you for choosing our template - <b>Smart Card</b> . It’s
@@ -51,7 +51,7 @@ export default function SmartCardTogglePortfolioReactjs() {
           There are system requirements in order to install and setup React
           Project. Make sure that you have install
           <DocRefLink text="node.js" link="https://nodejs.org" />. if you
-          haven't install{" "}
+          haven't install
           <DocRefLink text="node.js" link="https://nodejs.org" /> then please
           install it.
         </p>
@@ -61,18 +61,18 @@ export default function SmartCardTogglePortfolioReactjs() {
           After purchasing <b>Smart Card</b> template on templateforest.net with
           your Envato account, go to your Download page. You can choose to
           download <b>Smart Card </b>
-          template only (Installable react template) or the entire{" "}
+          template only (Installable react template) or the entire
           <b>Smart Card </b> template package which contains the following
           files:
         </p>
         <DocImage
           width="915"
           height="88"
-          src="/images/templates/scp/whats_included.png"
+          src="https://firebasestorage.googleapis.com/v0/b/stacksagar-storage.appspot.com/o/smart-card-portfolio%2Fwhats_included-min.PNG?alt=media&token=fe586c87-389e-46ec-9244-4284a1c601be"
         />
         <p>
-          After Unzip sb-portfolio.rar file, You can get the following items
-          after purchasing our template from themeforest 👆.
+          You can get the following items after purchasing our template from
+          themeforest and unzip main-file.zip file. 👆.
         </p>
 
         <Title text="React Installation" />
@@ -84,7 +84,7 @@ export default function SmartCardTogglePortfolioReactjs() {
           <List count={1}>
             First Go to
             <b className="flex mx-1">
-              <FolderIcon className="w-5" /> smard-card-portfolio
+              <FolderIcon className="w-5" /> smart-card-portfolio
             </b>
             folder.
           </List>
@@ -92,7 +92,7 @@ export default function SmartCardTogglePortfolioReactjs() {
           <List count={2}>
             Open your terminal in
             <b className="flex mx-1">
-              <FolderIcon className="w-5" /> smart-box-portfolio
+              <FolderIcon className="w-5" /> smart-card-portfolio
             </b>
             folder
           </List>
@@ -115,30 +115,155 @@ export default function SmartCardTogglePortfolioReactjs() {
         <DocImage
           width="1920"
           height="1080"
-          src="/images/templates/scp/localhost.png"
+          src="https://firebasestorage.googleapis.com/v0/b/stacksagar-storage.appspot.com/o/smart-card-portfolio%2Flocalhost-min.png?alt=media&token=7ac5ae34-a082-492f-a87c-e0361ebcec55"
         />
 
-        <Title text="Change Favicon" />
+        <Title text="Change Your Change Favicon" />
         <DocImage
           width="1920"
           height="1080"
-          src="/images/templates/sbp/favicon_change.png"
+          src="https://firebasestorage.googleapis.com/v0/b/stacksagar-storage.appspot.com/o/smart-card-portfolio%2Fchange_favicon-min.png?alt=media&token=e1096f4f-998e-45c6-b530-b13d1566af7f"
         />
         <Title text="Change Site Title" />
         <DocImage
           width="1920"
           height="1080"
-          src="/images/templates/sbp/title_change.png"
+          src="https://firebasestorage.googleapis.com/v0/b/stacksagar-storage.appspot.com/o/smart-card-portfolio%2Fchange_site_title-min.png?alt=media&token=24f845e5-e29c-4780-a34e-9fa1e910593f"
         />
 
         <FinishedText text="Congratulations you have finished setup." />
-        <p>Now it's time to modify with your data.</p>
       </DocSection>
- 
+
+      <DocSection>
+        <Title text="Change Your Home Data" />
+
+        <FilePath paths={["public", "images", "home_picture.jpg"]} />
+
+        <DocImage
+          width="945"
+          height="98"
+          src="https://firebasestorage.googleapis.com/v0/b/stacksagar-storage.appspot.com/o/smart-card-portfolio%2Fchange_home_picture-min.png?alt=media&token=8553081e-333f-4313-a85a-02de8110d504"
+        />
+        <p className="flex space-x-2 items-center">
+          <span>Replace this picture with same name</span>
+          <b>home_picture.jpg</b>
+          <span className="px-3 py-0.5 rounded bg-gray-500">300 x 300</span>
+        </p>
+
+        <Title text="Change Your Name & Profession Headline" />
+        <FilePath paths={["src", "components", "Home", "index.jsx"]} />
+        <DocImage
+          width="1920"
+          height="1080"
+          src="https://firebasestorage.googleapis.com/v0/b/stacksagar-storage.appspot.com/o/smart-card-portfolio%2Fchange_name_profession-min.png?alt=media&token=51b75e72-42ab-4024-9553-2ea0818bed24"
+        />
+
+        <Title text="Change Your Desc.. & Email" />
+        <FilePath paths={["src", "components", "Home", "index.jsx"]} />
+        <DocImage
+          width="1920"
+          height="1080"
+          src="https://firebasestorage.googleapis.com/v0/b/stacksagar-storage.appspot.com/o/smart-card-portfolio%2Fchange_desc_email-min.png?alt=media&token=a0567a24-2356-4f10-aedb-b053222f1a34"
+        />
+
+        <Title text="Change Social Links" />
+        <FilePath paths={["src", "components", "Home", "Social.jsx"]} />
+        <DocImage
+          width="1920"
+          height="1080"
+          src="https://firebasestorage.googleapis.com/v0/b/stacksagar-storage.appspot.com/o/smart-card-portfolio%2Fchange_socials-min.png?alt=media&token=805103e2-bbf8-401e-9576-975ab3622e14"
+        />
+        <FinishedText text="Finished Home Data!" />
+      </DocSection>
+
+      <DocSection>
+        <Title text="Change Your Resume Data" />
+
+        <Title text="Add Your Resume!" />
+        <FilePath paths={["public", "pdf", "resume.pdf"]} />
+        <DocImage
+          width="942"
+          height="76"
+          src="https://firebasestorage.googleapis.com/v0/b/stacksagar-storage.appspot.com/o/smart-card-portfolio%2Fadd_resume-min.png?alt=media&token=faa97b34-ec11-4c8a-88e2-930e6bbcd3d8"
+        />
+
+        <Title text="Add Experience" />
+        <FilePath paths={["src", "data", "experience_data.js"]} />
+        <DocImage
+          width="1920"
+          height="1080"
+          src="https://firebasestorage.googleapis.com/v0/b/stacksagar-storage.appspot.com/o/smart-card-portfolio%2Fchange_experience_data-min.png?alt=media&token=6d615282-2280-4e82-ba52-d81bbd4d9ecb"
+        />
+        <p> Add Your Experience Data Like This 👆 </p>
+
+        <FinishedText text="Finished Resume Data!" />
+      </DocSection>
+
+      <DocSection>
+        <Title text="Change Your Skills Data" />
+
+        <Title text="Add Your Technical Skills" />
+        <FilePath paths={["src", "components", "Skills", "TechnicalSkills"]} />
+        <DocImage
+          width="1920"
+          height="1080"
+          src="https://firebasestorage.googleapis.com/v0/b/stacksagar-storage.appspot.com/o/smart-card-portfolio%2Fchange_technical_skills-min.png?alt=media&token=b87e99fc-81d1-4138-a293-85910844a3d8"
+        />
+
+        <Title text="Add Your Skills By Percentage" />
+        <FilePath paths={["src", "data", "skills_data.js"]} />
+        <DocImage
+          width="1920"
+          height="1080"
+          src="https://firebasestorage.googleapis.com/v0/b/stacksagar-storage.appspot.com/o/smart-card-portfolio%2Fchange_skills_data-min.png?alt=media&token=656c4a2e-5b89-48bb-bf23-3d44ae529842"
+        />
+
+        <FinishedText text="Finished Skills Data!" />
+      </DocSection>
+
+      <DocSection>
+        <Title text="Change Your Portfolio Data" />
+
+        <Title text="Add Your Portfolios" />
+        <FilePath paths={["src", "data", "portfolios_data.js"]} />
+        <DocImage
+          width="1920"
+          height="1080"
+          src="https://firebasestorage.googleapis.com/v0/b/stacksagar-storage.appspot.com/o/smart-card-portfolio%2Fchange_portfolio_data-min.png?alt=media&token=0c4cfc47-3078-40c5-9d57-40c5086572d6"
+        />
+        <p>
+          In this <b>portfolio_data</b> object, declare your category name as a
+          array like this 👆, then add your single portfolio as a object.
+        </p>
+
+        <FinishedText text="Finished Portfolios Data!" />
+      </DocSection>
+
+      <DocSection>
+        <Title text="Change Your Contact Data" />
+
+        <Title text="This is Contact Form" />
+        <FilePath paths={["src", "components", "contact", "form.jsx"]} />
+        <DocImage
+          width="1920"
+          height="1080"
+          src="https://firebasestorage.googleapis.com/v0/b/stacksagar-storage.appspot.com/o/smart-card-portfolio%2Fform-min.png?alt=media&token=53f17c64-e1ca-4d98-bc8b-faf10918b867"
+        />
+
+        <Title text="Add Your Contact Info" />
+        <FilePath paths={["src", "components", "contact", "ContactInfo.jsx"]} />
+        <DocImage
+          width="1920"
+          height="1080"
+          src="https://firebasestorage.googleapis.com/v0/b/stacksagar-storage.appspot.com/o/smart-card-portfolio%2Fchange_contact_info-min.png?alt=media&token=5e353cda-fe32-414c-8812-751ebb8a730a"
+        />
+
+        <FinishedText text="Finished Contact Data!" />
+      </DocSection>
 
       {/* Change LOG */}
       <DocSection>
-        <Title text="Change LOG" />
+        <SmallTitle text="Change Log" />
 
         <p>
           Change Log
@@ -154,7 +279,7 @@ export default function SmartCardTogglePortfolioReactjs() {
 
         <ChangeLogTable>
           <ChangeLog
-            date="19 September 2021"
+            date="18 September 2021"
             version="1.0.0"
             action="new release"
           />
