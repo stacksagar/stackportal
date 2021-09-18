@@ -17,7 +17,7 @@ export const List = ({
     </li>
     {isLast ? null : <div className="w-0.5 h-4 ml-3 bg-gray-500" />}
   </>
-);
+); 
 
 export default function ListStepper({ children }) {
   return (
