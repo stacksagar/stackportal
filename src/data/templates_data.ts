@@ -6,15 +6,15 @@ const templates_data: templatesDataType = {
       SmartBoxPortfolioReactjs: {
         title: "Smart Box Portfolio React.js",
         image: "/images/templates/sbp.png",
-        purchase: "https://smart-box-portfolio.netlify.app/",
+        purchase: "",
         preview: "https://smart-box-portfolio.netlify.app/",
       },
 
       SmartCardTogglePortfolioReactjs: {
         title: "Smart Card Toggle Portfolio React.js",
-        image: "/images/templates/sbp.png",
-        purchase: "https://smart-box-portfolio.netlify.app/",
-        preview: "https://smart-box-portfolio.netlify.app/",
+        image: "/images/templates/scp.png",
+        purchase: "",
+        preview: "https://smart-card-portfolio.netlify.app/",
       },
     },
   },
