@@ -83,7 +83,7 @@ export default function SmartCardTogglePortfolioReactjs() {
         <ListStepper>
           <List count={1}>
             First Go to
-            <b className="flex mx-1">
+            <b className="flex items-center mx-1">
               <FolderIcon className="w-5" /> smart-card-portfolio
             </b>
             folder.
@@ -91,7 +91,7 @@ export default function SmartCardTogglePortfolioReactjs() {
 
           <List count={2}>
             Open your terminal in
-            <b className="flex mx-1">
+            <b className="flex items-center mx-1">
               <FolderIcon className="w-5" /> smart-card-portfolio
             </b>
             folder

@@ -79,7 +79,7 @@ export default function SmartBoxPortfolio() {
         <ListStepper>
           <List count={1}>
             First Go to
-            <b className="flex mx-1">
+            <b className="flex items-center mx-1">
               <FolderIcon className="w-5" /> smart-box-portfolio
             </b>
             folder.
@@ -87,7 +87,7 @@ export default function SmartBoxPortfolio() {
 
           <List count={2}>
             Open your terminal in
-            <b className="flex mx-1">
+            <b className="flex items-center mx-1">
               <FolderIcon className="w-5" /> smart-box-portfolio
             </b>
             folder

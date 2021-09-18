@@ -9,10 +9,10 @@ export const List = ({
   children: any;
 }) => (
   <>
-    <li className="flex items-center">
-      <b className="w-6 h-6 text-xs font-ombr mr-2 bg-black text-white dark:bg-white dark:text-gray-600 ring-4 rounded-full flex items-center justify-center">
+    <li className="flex items-center text-xs">
+      <small className="w-5 h-5 text-xs font-ombr mr-2 bg-black text-white dark:bg-white dark:text-gray-600 ring rounded-full inline-flex items-center justify-center">
         {count}
-      </b>
+      </small>
       {children}
     </li>
     {isLast ? null : <div className="w-0.5 h-4 ml-3 bg-gray-500" />}
@@ -20,5 +20,7 @@ export const List = ({
 );
 
 export default function ListStepper({ children }) {
-  return <ul className="border ring-1 rounded p-8 flex flex-col">{children}</ul>;
+  return (
+    <ul className="border ring-1 rounded p-8 flex flex-col">{children}</ul>
+  );
 }
