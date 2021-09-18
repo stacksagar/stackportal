@@ -73,7 +73,7 @@ export default function ResponsiveViewer({ preview }) {
             openDevices
               ? "scale-y-100 opacity-100 z-10"
               : "scale-y-0 opacity-0 z-0"
-          } w-96 h-pixel_350 absolute left-0 top-16 bg-gray-100 dark:bg-gray-900 rounded-b-sm shadow-lg ring-8 ring-gray-100 dark:ring-gray-900 overflow-y-scroll track_transparent grid grid-cols-12`}
+          } w-96 h-pixel_350 absolute left-0 top-16 bg-gray-100 dark:bg-gray-900 rounded-b shadow-lg ring-1 ring-gray-500 ring-opacity-50 overflow-y-scroll track_transparent grid grid-cols-12`}
         >
           <ResponsiveViewName
             model="Default"
